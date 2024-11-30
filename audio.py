@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 import os
 
-# Example of feature extraction from an audio file
 def extract_features(file_name):
     y, sr = librosa.load(file_name)
     mfcc = np.mean(librosa.feature.mfcc(y=y, sr=sr, n_mfcc=13).T, axis=0)
@@ -12,11 +11,10 @@ def extract_features(file_name):
     spectral_centroid = np.mean(librosa.feature.spectral_centroid(y=y, sr=sr).T, axis=0)
     return mfcc, chroma, zcr, spectral_centroid
 
-# Extract features from a list of audio files   
 features_list = []
 selected_audio_files = [
-    r'archive\Emotions\Angry\YAF_pool_angry.wav',
-    r'archive\Emotions\Angry\YAF_half_angry.wav',
+    r'archive\Emotions\Angry\YAF_young_angry.wav',
+    r'archive\Emotions\Angry\\YAF_witch_angry.wav',
     r'archive/Emotions/Disgusted/03-01-07-01-01-02-21.wav',
     r'archive\Emotions\Disgusted\03-01-07-01-02-02-16.wav',
     r'archive\Emotions\Fearful\03-01-06-01-02-01-02.wav',
@@ -32,13 +30,12 @@ selected_audio_files = [
 ]
 
 for audio_file in selected_audio_files:
-    file_name = os.path.basename(audio_file)
+    # file_name = os.path.basename(audio_file)
+    emotion = os.path.basename(os.path.dirname(audio_file))  # Extract emotion from the directory name
     mfcc, chroma, zcr, spectral_centroid = extract_features(audio_file)
-    features_list.append([file_name] + list(mfcc) + list(chroma) + [zcr] + [spectral_centroid])
+    features_list.append([emotion] + list(mfcc) + list(chroma) + [zcr] + [spectral_centroid])
 
-# Create column names for the DataFrame
-columns = ['File Name'] + [f'MFCC_{i}' for i in range(13)] + [f'Chroma_{i}' for i in range(12)] + ['Zero-Crossing Rate', 'Spectral Centroid']
+columns = ['Emotion'] + [f'MFCC_{i}' for i in range(13)] + [f'Chroma_{i}' for i in range(12)] + ['Zero-Crossing Rate', 'Spectral Centroid']
 
-# Save features to CSV, with the first column as the file_name label
 df = pd.DataFrame(features_list, columns=columns)
-df.to_csv('kyleAudio.csv', index=False)
+df.to_csv('audio.csv', index=False)
