@@ -1,0 +1,10 @@
+venv/
+myvenv/
+env/
+runs/
+archive/
+emotions/
+yolo11m.pt
+yolo11n.pt
+Encela/
+Fernandez/
