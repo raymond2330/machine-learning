@@ -1,0 +1,18 @@
+
+Benchmarks complete for best.pt on C:/Users/Raymond/Desktop/Machine Learning/catdog/datasets/data.yaml at imgsz=640 (182.28s)
+                   Format Status❔  Size (MB)  metrics/mAP50-95(B)  Inference time (ms/im)   FPS
+0                 PyTorch       ✅       38.6               0.4904                  182.39  5.48
+1             TorchScript       ✅       77.1               0.4912                  243.32  4.11
+2                    ONNX       ✅       76.7               0.4912                  216.90  4.61
+3                OpenVINO       ✅       76.9               0.4912                  205.59  4.86
+4                TensorRT       ❌        0.0                  NaN                     NaN   NaN
+5                  CoreML       ❌        0.0                  NaN                     NaN   NaN
+6   TensorFlow SavedModel       ❌        0.0                  NaN                     NaN   NaN
+7     TensorFlow GraphDef       ❌        0.0                  NaN                     NaN   NaN
+8         TensorFlow Lite       ❌        0.0                  NaN                     NaN   NaN
+9     TensorFlow Edge TPU       ❌        0.0                  NaN                     NaN   NaN
+10          TensorFlow.js       ❌        0.0                  NaN                     NaN   NaN
+11           PaddlePaddle       ❌        0.0                  NaN                     NaN   NaN
+12                    MNN       ✅       76.6               0.4912                  203.43  4.92
+13                   NCNN       ✅       76.6               0.4912                  260.32  3.84
+14                    IMX       ❌        0.0                  NaN                     NaN   NaN
